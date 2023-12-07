@@ -8,7 +8,7 @@ class Polygon:
         self.orientation = orientation
         self.num_polygon = num_polygon
         self.location = location
-        self.color = color
+        self.get_new_color = color
         self.border_size = border_size
 
     def draw_polygon(self, num_sides, size, orientation, location, color, border_size):
@@ -23,27 +23,29 @@ class Polygon:
             turtle.left(360/num_sides)
         turtle.penup()
 
-def get_new_color():
+    def get_new_color(self):
         return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
-def show_polygon():
-    turtle.speed(0)
-    turtle.bgcolor('black')
-    turtle.tracer(0)
-    turtle.colormode(255)
+    def show_polygon(self):
+        turtle.speed(0)
+        turtle.bgcolor('black')
+        turtle.tracer(0)
+        turtle.colormode(255)
 
 # draw a polygon at a random location, orientation, color, and border line thickness
+
 num_polygon = int(input('Which art do you want to generate? Enter a number between 1 to 8: '))
 num_sides = random.randint(3, 5) # triangle, square, or pentagon
 size = random.randint(50, 150)
 orientation = random.randint(0, 90)
 location = [random.randint(-300, 300), random.randint(-200, 200)]
-color = get_new_color()
+# color = get_new_color()
+color = Polygon.get_new_color()
 border_size = random.randint(1, 10)
 show = Polygon(num_sides, size, orientation, location, color, border_size, num_polygon)
 show.num_polygon = num_polygon
 show.draw_polygon(num_sides, size, orientation, location, color, border_size)
-show_polygon()
+# show_polygon()
 
 # specify a reduction ratio to draw a smaller polygon inside the one above
 reduction_ratio = 0.618
@@ -61,7 +63,7 @@ location[1] = turtle.pos()[1]
 size *= reduction_ratio
 
 # draw the second polygon embedded inside the original
-# draw_polygon(num_sides, size, orientation, location, color, border_size)
+show.draw_polygon(num_sides, size, orientation, location, color, border_size)
 
 # hold the window; close it by clicking the window close 'x' mark
 turtle.done()
