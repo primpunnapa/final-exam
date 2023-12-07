@@ -45,8 +45,11 @@ location[1] = turtle.pos()[1]
 # adjust the size according to the reduction ratio
 size *= reduction_ratio
 
-# draw the second polygon embedded inside the original 
+# draw the second polygon embedded inside the original
 draw_polygon(num_sides, size, orientation, location, color, border_size)
+# draw_polygon(num_sides, size, orientation, location, color, border_size)
+# draw_polygon(num_sides, size, orientation, location, color, border_size)
+
 
 # hold the window; close it by clicking the window close 'x' mark
 turtle.done()
